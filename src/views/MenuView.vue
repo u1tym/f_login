@@ -2,6 +2,7 @@
 import { computed, onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 import { fetchMe, logout } from "../api/authApi";
+import { appConfig } from "../config/appConfig";
 import portalImg from "../assets/menu/PORTAL.jpg";
 import knowhowImg from "../assets/menu/KNOWHOW.jpg";
 import goodsImg from "../assets/menu/GOODS.jpg";
@@ -20,11 +21,11 @@ const loading = ref(true);
 const username = ref("");
 
 const menuItems = computed<MenuItem[]>(() => [
-  { href: "knowhow/", ariaLabel: "ノウハウ", image: knowhowImg },
-  { href: "goods/", ariaLabel: "グッズ", image: goodsImg },
-  { href: "cache/", ariaLabel: "お金", image: moneyImg },
-  { href: "schedule/", ariaLabel: "スケジュール", image: scheduleImg },
-  { href: "recipe/", ariaLabel: "レシピ", image: recipeImg }
+  { href: appConfig.menuLinks.knowhow, ariaLabel: "ノウハウ", image: knowhowImg },
+  { href: appConfig.menuLinks.goods, ariaLabel: "グッズ", image: goodsImg },
+  { href: appConfig.menuLinks.money, ariaLabel: "お金", image: moneyImg },
+  { href: appConfig.menuLinks.schedule, ariaLabel: "スケジュール", image: scheduleImg },
+  { href: appConfig.menuLinks.recipe, ariaLabel: "レシピ", image: recipeImg }
 ]);
 
 async function loadUser(): Promise<void> {
