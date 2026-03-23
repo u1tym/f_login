@@ -1,0 +1,30 @@
+Vue で作ったフロントエンドから FastAPI の認証 API を呼び出したい。
+
+要件：
+- JWT は HttpOnly Cookie に入っているため、JavaScript からは読めない
+- API 呼び出し時に Cookie を送信する必要がある
+- axios を使う
+- axios のデフォルト設定で withCredentials: true を有効にする
+- /login に POST してログイン
+- /me に GET してログイン状態を確認
+- ログアウト時は /logout を呼ぶだけで Cookie が削除される
+- Vue Router のページ遷移をまたいでも Cookie は自動で送信される
+
+
+vue.js typescriptで作成。
+APIの起点は設定ファイルでもたせる。
+環境変数名等を使用する場合には、VITE_LOGIN_ORIGINとして。
+
+API仕様は、API_LOGIN_SPEC.mdを参照して。
+表示は、スマホを対象として。
+
+ユーザ名とパスワードを入れるがあって、
+ログインボタンがあって、押下すると、サーバに問い合わせに行く。
+
+正常時、JWTを保持して、menuに遷移する。
+menuのURLは、設定ファイルでもたせる。
+
+使用方法をREADME.mdで書いて。
+
+用意しているAPIで実現できなかったり、不明点があれば、教えて。
+
