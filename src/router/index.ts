@@ -7,14 +7,14 @@ import { fetchMe } from "../api/authApi";
 export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    { path: "/", redirect: "/login" },
+    { path: "/", name: "loginRoot", component: LoginView },
     { path: "/login", name: "login", component: LoginView },
     { path: appConfig.menuPath, name: "menu", component: MenuView }
   ]
 });
 
 router.beforeEach(async (to) => {
-  if (to.path === "/login") {
+  if (to.path === "/" || to.path === "/login") {
     return true;
   }
 
@@ -22,6 +22,6 @@ router.beforeEach(async (to) => {
     await fetchMe();
     return true;
   } catch {
-    return { path: "/login" };
+    return { path: "/" };
   }
 });
