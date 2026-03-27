@@ -9,6 +9,7 @@ import goodsImg from "../assets/menu/GOODS.jpg";
 import moneyImg from "../assets/menu/MONEY.jpg";
 import scheduleImg from "../assets/menu/SCHEDULE.jpg";
 import recipeImg from "../assets/menu/RECIPE.png";
+import routineImg from "../assets/menu/ROUTINE.jpg";
 
 type MenuItem = {
   href: string;
@@ -25,7 +26,8 @@ const menuItems = computed<MenuItem[]>(() => [
   { href: appConfig.menuLinks.goods, ariaLabel: "グッズ", image: goodsImg },
   { href: appConfig.menuLinks.money, ariaLabel: "お金", image: moneyImg },
   { href: appConfig.menuLinks.schedule, ariaLabel: "スケジュール", image: scheduleImg },
-  { href: appConfig.menuLinks.recipe, ariaLabel: "レシピ", image: recipeImg }
+  { href: appConfig.menuLinks.recipe, ariaLabel: "レシピ", image: recipeImg },
+  { href: appConfig.menuLinks.routine, ariaLabel: "ルーティーン", image: routineImg }
 ]);
 
 async function loadUser(): Promise<void> {
@@ -73,10 +75,11 @@ onMounted(loadUser);
           <img :src="portalImg" alt="PORTAL" width="400" height="400" />
         </div>
         <a
-          v-for="item in menuItems"
+          v-for="(item, index) in menuItems"
           :key="item.href"
           href="#"
           :aria-label="item.ariaLabel"
+          :style="{ '--i': index, '--count': menuItems.length }"
           @click.prevent="moveToMenuItem(item.href)"
         >
           <img :src="item.image" alt="" width="400" height="400" />
@@ -212,23 +215,10 @@ onMounted(loadUser);
   object-fit: cover;
 }
 
-.pentagon a:nth-of-type(1) {
-  --i: 0;
-}
-.pentagon a:nth-of-type(2) {
-  --i: 1;
-}
-.pentagon a:nth-of-type(3) {
-  --i: 2;
-}
-.pentagon a:nth-of-type(4) {
-  --i: 3;
-}
-.pentagon a:nth-of-type(5) {
-  --i: 4;
-}
-
 .pentagon a {
+  --i: 0;
+  --count: 6;
+  --step: calc(360deg / var(--count));
   --orbit: 38cqmin;
   position: absolute;
   left: 50%;
@@ -243,16 +233,16 @@ onMounted(loadUser);
   justify-content: center;
   text-decoration: none;
   color: inherit;
-  transform: translate(-50%, -50%) rotate(calc(var(--i) * 72deg)) translateY(calc(-1 * var(--orbit)))
-    rotate(calc(-1 * var(--i) * 72deg));
+  transform: translate(-50%, -50%) rotate(calc(var(--i) * var(--step))) translateY(calc(-1 * var(--orbit)))
+    rotate(calc(-1 * var(--i) * var(--step)));
   transform-origin: center center;
   transition: transform 0.18s ease, opacity 0.18s ease;
   touch-action: manipulation;
 }
 
 .pentagon a:active {
-  transform: translate(-50%, -50%) rotate(calc(var(--i) * 72deg)) translateY(calc(-1 * var(--orbit)))
-    rotate(calc(-1 * var(--i) * 72deg)) scale(0.94);
+  transform: translate(-50%, -50%) rotate(calc(var(--i) * var(--step))) translateY(calc(-1 * var(--orbit)))
+    rotate(calc(-1 * var(--i) * var(--step))) scale(0.94);
   opacity: 0.9;
 }
 

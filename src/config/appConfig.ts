@@ -7,6 +7,7 @@ type AppConfig = {
     money: string;
     schedule: string;
     recipe: string;
+    routine: string;
   };
 };
 
@@ -18,6 +19,7 @@ export const appConfig: AppConfig = {
     goods: "/mobile/goods/",
     money: "/mobile/cache/",
     schedule: "/mobile/schedule/",
-    recipe: "/mobile/recipe/"
+    recipe: "/mobile/recipe/",
+    routine: "/mobile/routine/"
   }
 };
