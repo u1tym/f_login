@@ -6,12 +6,12 @@ import { httpClient } from "./httpClient";
  */
 export async function subscribePush(username: string): Promise<void> {
   if (!("serviceWorker" in navigator) || !("PushManager" in window)) {
-    return;
+    return
   }
 
   const applicationServerKey = import.meta.env.VITE_VAPID_PUBLIC_KEY;
   if (!applicationServerKey) {
-    return;
+    return
   }
 
   const registration = await navigator.serviceWorker.ready;
@@ -22,11 +22,13 @@ export async function subscribePush(username: string): Promise<void> {
     subscription = await registration.pushManager.subscribe({
       userVisibleOnly: true,
       applicationServerKey
-    });
+    })
   }
+
+  console.log(subscription.toJSON())
 
   await httpClient.post("/save-subscription", {
     username,
     subscription: subscription.toJSON()
-  });
+  })
 }
