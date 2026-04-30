@@ -32,8 +32,8 @@ async function onSubmit(): Promise<void> {
     const isAndroidMobile = /Android.*Mobile/.test(ua)
 
     const isSmartphone = isIPhone || isAndroidMobile
-    const isTablet = isIPad || (/Android/.test(ua) && !/Mobile/.test(ua))
-    const isPC = !isSmartphone && !isTablet
+    //const isTablet = isIPad || (/Android/.test(ua) && !/Mobile/.test(ua))
+    //const isPC = !isSmartphone && !isTablet
 
     if (isSmartphone && ("serviceWorker" in navigator)) {
       try {
