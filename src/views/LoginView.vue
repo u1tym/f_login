@@ -25,12 +25,26 @@ async function onSubmit(): Promise<void> {
       password: form.password
     });
     if ("serviceWorker" in navigator) {
-      await navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`);
       try {
-        await subscribePush(form.username);
-      } catch {
-        // Push 登録失敗でもログイン遷移は行う
+        const registration = await navigator.serviceWorker.register(
+          `${import.meta.env.BASE_URL}sw.js`
+        );
+        console.log("[SW] Service Worker を起動（登録）しました", {
+          scope: registration.scope,
+          active: Boolean(registration.active),
+          installing: Boolean(registration.installing),
+          waiting: Boolean(registration.waiting)
+        });
+        try {
+          await subscribePush(form.username);
+        } catch (err) {
+          console.warn("[Push] subscribePush に失敗しました", err);
+        }
+      } catch (err) {
+        console.warn("[SW] Service Worker の登録に失敗しました", err);
       }
+    } else {
+      console.log("[SW] この環境では Service Worker が利用できません");
     }
     await router.push(appConfig.menuPath);
   } catch (error: unknown) {

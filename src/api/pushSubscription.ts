@@ -6,29 +6,37 @@ import { httpClient } from "./httpClient";
  */
 export async function subscribePush(username: string): Promise<void> {
   if (!("serviceWorker" in navigator) || !("PushManager" in window)) {
-    return
+    console.log("[Push] Service Worker または PushManager 非対応のため購読をスキップしました");
+    return;
   }
 
   const applicationServerKey = import.meta.env.VITE_VAPID_PUBLIC_KEY;
   if (!applicationServerKey) {
-    return
+    console.log("[Push] VITE_VAPID_PUBLIC_KEY 未設定のため購読をスキップしました");
+    return;
   }
 
   const registration = await navigator.serviceWorker.ready;
 
   let subscription = await registration.pushManager.getSubscription();
 
-  if (!subscription) {
+  if (subscription) {
+    console.log("[Push] Push Subscription を取得しました（既存の購読を再利用）", {
+      endpoint: subscription.endpoint
+    });
+  } else {
     subscription = await registration.pushManager.subscribe({
       userVisibleOnly: true,
       applicationServerKey
-    })
+    });
+    console.log("[Push] Push Subscription を取得しました（新規購読）", {
+      endpoint: subscription.endpoint
+    });
   }
-
-  console.log(subscription.toJSON())
 
   await httpClient.post("/save-subscription", {
     username,
     subscription: subscription.toJSON()
-  })
+  });
+  console.log("[Push] save-subscription への送信が完了しました");
 }
