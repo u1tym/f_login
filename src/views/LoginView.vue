@@ -28,7 +28,7 @@ async function onSubmit(): Promise<void> {
     const ua = navigator.userAgent
 
     const isIPhone = ua.includes("iPhone")
-    const isIPad = ua.includes("iPad")
+    //const isIPad = ua.includes("iPad")
     const isAndroidMobile = /Android.*Mobile/.test(ua)
 
     const isSmartphone = isIPhone || isAndroidMobile
