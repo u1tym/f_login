@@ -35,6 +35,8 @@ async function onSubmit(): Promise<void> {
     //const isTablet = isIPad || (/Android/.test(ua) && !/Mobile/.test(ua))
     //const isPC = !isSmartphone && !isTablet
 
+    console.login(ua)
+
     if (isSmartphone && ("serviceWorker" in navigator)) {
       try {
         const registration = await navigator.serviceWorker.register(

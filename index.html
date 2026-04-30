@@ -20,6 +20,8 @@
     //const isTablet = isIPad || (/Android/.test(ua) && !/Mobile/.test(ua))
     //const isPC = !isSmartphone && !isTablet
 
+    console.log(ua)
+
     if (isSmartphone && ('serviceWorker' in navigator)) {
       navigator.serviceWorker.register('/mobile/sw.js')
     }
