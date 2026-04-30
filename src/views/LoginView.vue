@@ -3,6 +3,7 @@ import axios from "axios";
 import { reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 import { login } from "../api/authApi";
+import { subscribePush } from "../api/pushSubscription";
 import { appConfig } from "../config/appConfig";
 
 const router = useRouter();
@@ -24,7 +25,12 @@ async function onSubmit(): Promise<void> {
       password: form.password
     });
     if ("serviceWorker" in navigator) {
-      void navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`);
+      await navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`);
+      try {
+        await subscribePush(form.username);
+      } catch {
+        // Push 登録失敗でもログイン遷移は行う
+      }
     }
     await router.push(appConfig.menuPath);
   } catch (error: unknown) {
