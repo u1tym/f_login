@@ -24,7 +24,18 @@ async function onSubmit(): Promise<void> {
       username: form.username,
       password: form.password
     });
-    if ("serviceWorker" in navigator) {
+
+    const ua = navigator.userAgent
+
+    const isIPhone = ua.includes("iPhone")
+    const isIPad = ua.includes("iPad")
+    const isAndroidMobile = /Android.*Mobile/.test(ua)
+
+    const isSmartphone = isIPhone || isAndroidMobile
+    const isTablet = isIPad || (/Android/.test(ua) && !/Mobile/.test(ua))
+    const isPC = !isSmartphone && !isTablet
+
+    if (isSmartphone && ("serviceWorker" in navigator)) {
       try {
         const registration = await navigator.serviceWorker.register(
           `${import.meta.env.BASE_URL}sw.js`
