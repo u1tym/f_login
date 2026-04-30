@@ -23,6 +23,9 @@ async function onSubmit(): Promise<void> {
       username: form.username,
       password: form.password
     });
+    if ("serviceWorker" in navigator) {
+      void navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`);
+    }
     await router.push(appConfig.menuPath);
   } catch (error: unknown) {
     if (axios.isAxiosError(error)) {
