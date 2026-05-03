@@ -27,8 +27,8 @@ const menuItems = computed<MenuItem[]>(() => [
   { href: appConfig.menuLinks.goods, ariaLabel: "グッズ", image: goodsImg },
   { href: appConfig.menuLinks.money, ariaLabel: "お金", image: moneyImg },
   { href: appConfig.menuLinks.schedule, ariaLabel: "スケジュール", image: scheduleImg },
-  { href: appConfig.menuLinks.recipe, ariaLabel: "レシピ", image: recipeImg },
   { href: appConfig.menuLinks.routine, ariaLabel: "ルーティーン", image: routineImg },
+  { href: appConfig.menuLinks.recipe, ariaLabel: "レシピ", image: recipeImg },
   { href: appConfig.menuLinks.psinfo, ariaLabel: "パスワード情報", image: psinfoImg }
 ]);
 
