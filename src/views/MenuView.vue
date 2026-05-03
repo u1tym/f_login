@@ -1,15 +1,16 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from "vue";
-import { useRouter } from "vue-router";
-import { fetchMe, logout } from "../api/authApi";
-import { appConfig } from "../config/appConfig";
-import portalImg from "../assets/menu/PORTAL.jpg";
-import knowhowImg from "../assets/menu/KNOWHOW.jpg";
-import goodsImg from "../assets/menu/GOODS.jpg";
-import moneyImg from "../assets/menu/MONEY.jpg";
-import scheduleImg from "../assets/menu/SCHEDULE.jpg";
-import recipeImg from "../assets/menu/RECIPE.png";
-import routineImg from "../assets/menu/ROUTINE.jpg";
+import { computed, onMounted, ref } from "vue"
+import { useRouter } from "vue-router"
+import { fetchMe, logout } from "../api/authApi"
+import { appConfig } from "../config/appConfig"
+import portalImg from "../assets/menu/PORTAL.jpg"
+import knowhowImg from "../assets/menu/KNOWHOW.jpg"
+import goodsImg from "../assets/menu/GOODS.jpg"
+import moneyImg from "../assets/menu/MONEY.jpg"
+import scheduleImg from "../assets/menu/SCHEDULE.jpg"
+import recipeImg from "../assets/menu/RECIPE.png"
+import routineImg from "../assets/menu/ROUTINE.jpg"
+import psinfoImg from "../assets/menu/PSINFO.jpg"
 
 type MenuItem = {
   href: string;
@@ -27,7 +28,8 @@ const menuItems = computed<MenuItem[]>(() => [
   { href: appConfig.menuLinks.money, ariaLabel: "お金", image: moneyImg },
   { href: appConfig.menuLinks.schedule, ariaLabel: "スケジュール", image: scheduleImg },
   { href: appConfig.menuLinks.recipe, ariaLabel: "レシピ", image: recipeImg },
-  { href: appConfig.menuLinks.routine, ariaLabel: "ルーティーン", image: routineImg }
+  { href: appConfig.menuLinks.routine, ariaLabel: "ルーティーン", image: routineImg },
+  { href: appConfig.menuLinks.psinfo, ariaLabel: "パスワード情報", image: psinfoImg }
 ]);
 
 async function loadUser(): Promise<void> {

@@ -1,13 +1,14 @@
 type AppConfig = {
-  apiOrigin: string;
-  menuPath: string;
+  apiOrigin: string
+  menuPath: string
   menuLinks: {
-    knowhow: string;
-    goods: string;
-    money: string;
-    schedule: string;
-    recipe: string;
-    routine: string;
+    knowhow: string
+    goods: string
+    money: string
+    schedule: string
+    recipe: string
+    routine: string
+    psinfo: string
   };
 };
 
@@ -20,6 +21,7 @@ export const appConfig: AppConfig = {
     money: "/mobile/cache/",
     schedule: "/mobile/schedule/",
     recipe: "/mobile/recipe/",
-    routine: "/mobile/routine/"
+    routine: "/mobile/routine/",
+    psinfo: "/mobile/psinfo/"
   }
-};
+}
