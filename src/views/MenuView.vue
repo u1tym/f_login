@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from "vue"
+import { computed, onMounted, onUnmounted, ref } from "vue"
 import { useRouter } from "vue-router"
 import { fetchMe, logout } from "../api/authApi"
 import { appConfig } from "../config/appConfig"
@@ -21,6 +21,8 @@ type MenuItem = {
 const router = useRouter();
 const loading = ref(true);
 const username = ref("");
+
+const MOBILE_SCROLL_LOCK_CLASS = "mobile-scroll-lock";
 
 const menuItems = computed<MenuItem[]>(() => [
   { href: appConfig.menuLinks.knowhow, ariaLabel: "ノウハウ", image: knowhowImg },
@@ -59,7 +61,14 @@ async function onLogout(): Promise<void> {
   }
 }
 
-onMounted(loadUser);
+onMounted(() => {
+  document.documentElement.classList.add(MOBILE_SCROLL_LOCK_CLASS);
+  void loadUser();
+});
+
+onUnmounted(() => {
+  document.documentElement.classList.remove(MOBILE_SCROLL_LOCK_CLASS);
+});
 </script>
 
 <template>

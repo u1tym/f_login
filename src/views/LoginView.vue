@@ -15,14 +15,14 @@ const form = reactive({
 const loading = ref(false);
 const errorMessage = ref("");
 
-const LOGIN_SCROLL_LOCK_CLASS = "login-scroll-lock";
+const MOBILE_SCROLL_LOCK_CLASS = "mobile-scroll-lock";
 
 onMounted(() => {
-  document.documentElement.classList.add(LOGIN_SCROLL_LOCK_CLASS);
+  document.documentElement.classList.add(MOBILE_SCROLL_LOCK_CLASS);
 });
 
 onUnmounted(() => {
-  document.documentElement.classList.remove(LOGIN_SCROLL_LOCK_CLASS);
+  document.documentElement.classList.remove(MOBILE_SCROLL_LOCK_CLASS);
 });
 
 async function onSubmit(): Promise<void> {
