@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import axios from "axios";
-import { reactive, ref } from "vue";
+import { onMounted, onUnmounted, reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 import { login } from "../api/authApi";
 import { subscribePush } from "../api/pushSubscription";
@@ -14,6 +14,16 @@ const form = reactive({
 });
 const loading = ref(false);
 const errorMessage = ref("");
+
+const LOGIN_SCROLL_LOCK_CLASS = "login-scroll-lock";
+
+onMounted(() => {
+  document.documentElement.classList.add(LOGIN_SCROLL_LOCK_CLASS);
+});
+
+onUnmounted(() => {
+  document.documentElement.classList.remove(LOGIN_SCROLL_LOCK_CLASS);
+});
 
 async function onSubmit(): Promise<void> {
   errorMessage.value = "";
