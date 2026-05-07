@@ -9,6 +9,8 @@ type AppConfig = {
     recipe: string
     routine: string
     psinfo: string
+    study: string
+    notes: string
   };
 };
 
@@ -22,6 +24,8 @@ export const appConfig: AppConfig = {
     schedule: "/mobile/schedule/",
     recipe: "/mobile/recipe/",
     routine: "/mobile/routine/",
-    psinfo: "/mobile/psinfo/"
+    psinfo: "/mobile/psinfo/",
+    study: "/mobile/study/",
+    notes: "/mobile/notes/",
   }
 }
