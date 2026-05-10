@@ -12,6 +12,7 @@ import recipeImg from "../assets/menu/RECIPE.png"
 import routineImg from "../assets/menu/ROUTINE.jpg"
 import psinfoImg from "../assets/menu/PSINFO.jpg"
 import blankImg from "../assets/menu/BLANK.jpg"
+import studyImg from "../assets/menu/STUDY.jpg"
 
 type MenuItem = {
   href: string;
@@ -28,7 +29,7 @@ const MOBILE_SCROLL_LOCK_CLASS = "mobile-scroll-lock";
 const menuItems = computed<MenuItem[]>(() => [
   { href: appConfig.menuLinks.knowhow, ariaLabel: "ノウハウ", image: knowhowImg },
   { href: appConfig.menuLinks.goods, ariaLabel: "グッズ", image: goodsImg },
-  { href: appConfig.menuLinks.study, ariaLabel: "勉強", image: blankImg },
+  { href: appConfig.menuLinks.study, ariaLabel: "勉強", image: studyImg },
   { href: appConfig.menuLinks.money, ariaLabel: "お金", image: moneyImg },
   { href: appConfig.menuLinks.schedule, ariaLabel: "スケジュール", image: scheduleImg },
   { href: appConfig.menuLinks.routine, ariaLabel: "ルーティーン", image: routineImg },
