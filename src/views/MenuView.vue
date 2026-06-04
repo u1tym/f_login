@@ -11,8 +11,9 @@ import scheduleImg from "../assets/menu/SCHEDULE.jpg"
 import recipeImg from "../assets/menu/RECIPE.png"
 import routineImg from "../assets/menu/ROUTINE.jpg"
 import psinfoImg from "../assets/menu/PSINFO.jpg"
-import blankImg from "../assets/menu/BLANK.jpg"
+//import blankImg from "../assets/menu/BLANK.jpg"
 import studyImg from "../assets/menu/STUDY.jpg"
+import noteImg from "../assets/menu/NOTE.jpg"
 
 type MenuItem = {
   href: string;
@@ -34,7 +35,7 @@ const menuItems = computed<MenuItem[]>(() => [
   { href: appConfig.menuLinks.schedule, ariaLabel: "スケジュール", image: scheduleImg },
   { href: appConfig.menuLinks.routine, ariaLabel: "ルーティーン", image: routineImg },
   { href: appConfig.menuLinks.recipe, ariaLabel: "レシピ", image: recipeImg },
-  { href: appConfig.menuLinks.notes, ariaLabel: "ノート", image: blankImg },
+  { href: appConfig.menuLinks.notes, ariaLabel: "ノート", image: noteImg },
   { href: appConfig.menuLinks.psinfo, ariaLabel: "パスワード情報", image: psinfoImg }
 ]);
 
