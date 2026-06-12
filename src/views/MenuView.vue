@@ -11,7 +11,8 @@ import scheduleImg from "../assets/menu/SCHEDULE.jpg"
 import recipeImg from "../assets/menu/RECIPE.png"
 import routineImg from "../assets/menu/ROUTINE.jpg"
 import psinfoImg from "../assets/menu/PSINFO.jpg"
-//import blankImg from "../assets/menu/BLANK.jpg"
+import contractImg from "../assets/menu/CONTRACT.jpg"
+import blankImg from "../assets/menu/BLANK.jpg"
 import studyImg from "../assets/menu/STUDY.jpg"
 import noteImg from "../assets/menu/NOTE.jpg"
 
@@ -36,7 +37,9 @@ const menuItems = computed<MenuItem[]>(() => [
   { href: appConfig.menuLinks.routine, ariaLabel: "ルーティーン", image: routineImg },
   { href: appConfig.menuLinks.recipe, ariaLabel: "レシピ", image: recipeImg },
   { href: appConfig.menuLinks.notes, ariaLabel: "ノート", image: noteImg },
-  { href: appConfig.menuLinks.psinfo, ariaLabel: "パスワード情報", image: psinfoImg }
+  { href: appConfig.menuLinks.psinfo, ariaLabel: "パスワード情報", image: psinfoImg },
+  { href: appConfig.menuLinks.contract, ariaLabel: "契約情報", image: contractImg },
+  { href: "", ariaLabel: "", image: blankImg }
 ]);
 
 async function loadUser(): Promise<void> {
