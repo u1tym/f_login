@@ -13,6 +13,7 @@ import routineImg from "../assets/menu/ROUTINE.jpg"
 import psinfoImg from "../assets/menu/PSINFO.jpg"
 import blankImg from "../assets/menu/BLANK.jpg"
 import studyImg from "../assets/menu/STUDY.jpg"
+import movieImg from "../assets/menu/MOVIE.jpg"
 
 type MenuItem = {
   href: string;
@@ -35,6 +36,7 @@ const menuItems = computed<MenuItem[]>(() => [
   { href: appConfig.menuLinks.routine, ariaLabel: "ルーティーン", image: routineImg },
   { href: appConfig.menuLinks.recipe, ariaLabel: "レシピ", image: recipeImg },
   { href: appConfig.menuLinks.notes, ariaLabel: "ノート", image: blankImg },
+  { href: appConfig.menuLinks.movie, ariaLabel: "動画", image: movieImg }
   { href: appConfig.menuLinks.psinfo, ariaLabel: "パスワード情報", image: psinfoImg }
 ]);
 

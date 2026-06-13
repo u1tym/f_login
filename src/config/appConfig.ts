@@ -11,6 +11,7 @@ type AppConfig = {
     psinfo: string
     study: string
     notes: string
+    movie: string
   };
 };
 
@@ -27,5 +28,6 @@ export const appConfig: AppConfig = {
     psinfo: "/mobile/psinfo/",
     study: "/mobile/study/",
     notes: "/mobile/notes/",
+    movie: "/mobile/movie/"
   }
 }
