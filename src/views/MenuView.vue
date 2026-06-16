@@ -240,13 +240,13 @@ onUnmounted(() => {
   --i: 0;
   --count: 6;
   --step: calc(360deg / var(--count));
-  --orbit: 38cqmin;
+  --orbit: 41cqmin;
   position: absolute;
   left: 50%;
   top: 50%;
   z-index: 2;
-  width: 28cqmin;
-  max-width: 104px;
+  width: 24cqmin;
+  max-width: 92px;
   padding: 0;
   border-radius: 50%;
   display: flex;
@@ -281,8 +281,8 @@ onUnmounted(() => {
   }
 
   .pentagon a {
-    --orbit: min(35vw, 17dvh, 132px);
-    width: min(26vw, 12.8dvh, 96px);
+    --orbit: min(39vw, 19dvh, 148px);
+    width: min(22vw, 11dvh, 84px);
   }
 }
 </style>
