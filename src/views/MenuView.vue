@@ -17,6 +17,7 @@ import blankImg from "../assets/menu/BLANK.jpg"
 import studyImg from "../assets/menu/STUDY.jpg"
 import movieImg from "../assets/menu/MOVIE.jpg"
 import noteImg from "../assets/menu/NOTE.jpg"
+import shopImg from "../assets/menu/SHOPS.jpg"
 
 type MenuItem = {
   href: string;
@@ -42,6 +43,7 @@ const menuItems = computed<MenuItem[]>(() => [
   { href: appConfig.menuLinks.psinfo, ariaLabel: "パスワード情報", image: psinfoImg },
   { href: appConfig.menuLinks.movie, ariaLabel: "動画", image: movieImg },
   { href: appConfig.menuLinks.contract, ariaLabel: "契約情報", image: contractImg },
+  { href: appConfig.menuLinks.shops, ariaLabel: "ショップ", image: shopImg },
   { href: "", ariaLabel: "", image: blankImg }
 ]);
 

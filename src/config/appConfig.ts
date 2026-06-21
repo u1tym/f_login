@@ -13,6 +13,7 @@ type AppConfig = {
     notes: string
     movie: string
     contract: string
+    shops: string
   };
 };
 
@@ -30,6 +31,7 @@ export const appConfig: AppConfig = {
     study: "/mobile/study/",
     notes: "/mobile/notes/",
     movie: "/mobile/movie/",
-    contract: "/mobile/contract/"
+    contract: "/mobile/contract/",
+    shops: "/mobile/shops/"
   }
 }
